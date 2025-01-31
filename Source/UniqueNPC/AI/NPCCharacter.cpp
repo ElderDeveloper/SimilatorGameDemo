@@ -139,7 +139,11 @@ void ANPCCharacter::RequestWaitLine_Implementation(ANPCWaitLine* Line)
 
 bool ANPCCharacter::IsShopping_Implementation()
 {
-	return CurrentWaitLine != nullptr && bIsLeaving;
+	if (bIsLeaving)
+	{
+		 return true;
+	}
+	return CurrentWaitLine != nullptr;
 }
 
 void ANPCCharacter::OnActionFinished(UNPCActionBase* FinishedAction)
